@@ -1,8 +1,20 @@
 const express = require('express');
-const app = express();
-const routes = require('./routes');
+const server = express();
 
-app.use(express.json());
-app.use(routes);
+server.use(express.static('public'));
 
-app.listen(3333);
+const nunjuscks = require('nunjucks');
+
+server.use(express.urlencoded( { extended: true } ));
+
+nunjuscks.configure('./', {
+	express: server,
+	noCache: true
+});
+
+server.get('/', (req, res) => {
+	const nome = 'Nenzim';
+	return res.render('index.html', { nome });
+});
+
+server.listen(3333);
