@@ -2,7 +2,7 @@ const express = require('express');
 const routes = express.Router();
 
 routes.get('/', (req, res) => {
-	return res.redirect('/instructors');
+	return res.render('layout.html');
 });
 
 routes.get('/instructors', (req, res) => {
