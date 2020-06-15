@@ -1,0 +1,12 @@
+{
+ "instructors": [
+  {
+   "avatar_url": "http://google.com",
+   "name": "Cleilton Timoteo",
+   "birth": "2001-12-27",
+   "gender": "M",
+   "services": "Personal",
+   "created_at": 1592255450072
+  }
+ ]
+}

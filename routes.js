@@ -1,16 +1,20 @@
 const express = require('express');
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
-	return res.render('layout.html');
-});
+const InstructorController = require('./controllers/InstructorController');
+const MemberController = require('./controllers/MemberController');
 
-routes.get('/instructors', (req, res) => {
-	return res.render('instructors/index.html', { title: 'Ola' });
-});
+// Home page
+routes.get('/', (req, res) => res.render('layout'));
 
+// Page instructor
+routes.get('/instructors', InstructorController.index);
+routes.post('/instructors', InstructorController.index);
+routes.get('/instructors/create', InstructorController.create);
+
+// Page members
 routes.get('/members', (req, res) => {
-	return res.render('members/index.html', { title: 'Ola' });
+	return res.render('members/index.html');
 });
 
 module.exports = routes;
