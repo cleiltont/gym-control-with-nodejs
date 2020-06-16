@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+	
+{% block content %}
+<div class="card">
+	<section class="avatar" 
+	style="background: url('{{ foundInstructor.avatar_url }}') no-repeat center center / cover;">
+	</section>
+	<section class="details">
+		<h3>Detalhes</h3>
+
+		<div class="item">
+			<div>Instrutor</div>
+			<div>{{ instructor.name }}</div>
+		</div>
+
+		<div class="item">
+			<div>Idade</div>
+			<div>{{ instructor.birth }}</div>
+		</div>
+
+		<div class="item">
+			<div>Sexo</div>
+			<div>
+				{% if instructor.gender === 'M' %}
+					Masculino
+				{% else %}
+					Feminino
+				{% endif %}
+			</div>
+		</div>
+
+		<div class="item">
+			<div>Acompanhamento</div>
+			<div>
+				{% for service in services %}
+					<span>{{ service }}</span>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="item">
+			<div>Desde</div>
+			<div>{{ instructor.created_at }}</div>
+		</div>
+
+
+	</section>
+</div>
+		
+{% endblock %}

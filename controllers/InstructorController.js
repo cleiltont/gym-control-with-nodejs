@@ -12,11 +12,23 @@ const InstructorController = {
 				}
 			}
 
-			req.body.birth = Date.parse(req.body.birth);
-			req.body.created_at = Date.now();
-			req.body.id = Number(data.instructors.length + 1);
+			let { avatar_url, birth, name, services, gender } = req.body;
 
-			data.instructors.push(req.body);
+
+			birth = Date.parse(req.body.birth);
+			const created_at = Date.now();
+			const id = Number(data.instructors.length + 1);
+
+
+			data.instructors.push({
+				id,
+				avatar_url,
+				name,
+				birth,
+				gender,
+				services,
+				created_at
+			});
 
 			fs.writeFile('data.json', JSON.stringify(data, null, 1), err => {
 				if(err) return res.send('Erro na escrita!');
@@ -29,6 +41,18 @@ const InstructorController = {
 	create: (req, res) => {
 		return res.render('instructors/create');
 	},
+	detail: (req, res) => {
+		const { id } = req.params;
+
+		const foundInstructor = 
+			data.instructors.find(instructor => id == instructor.id );
+		
+		if(!foundInstructor) return res.send('Instrutor não encontrado');
+
+		const services = foundInstructor.services.split(',');
+
+		return res.render('instructors/detail', { instructor: foundInstructor, services });
+	}
 }
 
 module.exports = InstructorController;
