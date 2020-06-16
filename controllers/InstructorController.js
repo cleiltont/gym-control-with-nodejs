@@ -49,9 +49,25 @@ const InstructorController = {
 		
 		if(!foundInstructor) return res.send('Instrutor não encontrado');
 
-		const services = foundInstructor.services.split(',');
+		function age(timestamp){
+			const today = new Date();
+			const birthDate = new Date(timestamp);
+			let age = today.getFullYear() - birthDate.getFullYear();
+			const month = today.getMonth() - birthDate.getMonth();
+			if(month < 0 || month == 0 && today.getDate() <= birthDate.getDate()){
+				age +- 1;
+			}
+		}
 
-		return res.render('instructors/detail', { instructor: foundInstructor, services });
+		const services = foundInstructor.services.split(',');
+		const instructor = {
+			...foundInstructor,
+			age: age(foundInstructor.birth),
+			services: foundInstructor.services.split(','),
+			created_at: ''
+		};
+
+		return res.render('instructors/detail', { instructor });
 	}
 }
 
