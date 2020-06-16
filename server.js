@@ -2,6 +2,10 @@
 const express = require('express');
 const server = express();
 
+const methodOverride = require('method-override');
+
+server.use(methodOverride('_method'));
+
 // Importando rotas
 const routes = require('./routes');
 

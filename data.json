@@ -3,10 +3,10 @@
   {
    "id": 1,
    "avatar_url": "https://source.unsplash.com/collection/8172461/500x500",
-   "name": "Cleilton Timoteo",
+   "name": "Cleilton Timoteo4",
    "birth": 1009411200000,
    "gender": "M",
-   "services": "Personal, Natação",
+   "services": "Personal, Natação, Musculação",
    "created_at": 1592258780924
   },
   {
@@ -17,6 +17,24 @@
    "gender": "F",
    "services": "Nutricionista",
    "created_at": 1592316484985
+  },
+  {
+   "id": 3,
+   "avatar_url": "http://google.com",
+   "name": "Edinaldo Batista",
+   "birth": 505872000000,
+   "gender": "M",
+   "services": "musculação",
+   "created_at": 1592325108449
+  },
+  {
+   "id": 4,
+   "avatar_url": "https://source.unsplash.com/collection/8172461/500x500",
+   "name": "Francisco Timoteo",
+   "birth": 600307200000,
+   "gender": "M",
+   "services": "musculação",
+   "created_at": 1592339877198
   }
  ]
 }

@@ -4,44 +4,42 @@ const { age, date } = require('../lib');
 
 const InstructorController = {
 	index: (req, res) => {
-		if(req.method === 'POST'){
-			const keys = Object.keys(req.body);
-	
-			for(key of keys){
-				if(req.body[key].trim() === ""){
-					return res.send('Preencha todos os campos corretamente');
-				}
-			}
 
-			let { avatar_url, birth, name, services, gender } = req.body;
-
-
-			birth = Date.parse(req.body.birth);
-			const created_at = Date.now();
-			const id = Number(data.instructors.length + 1);
-
-
-			data.instructors.push({
-				id,
-				avatar_url,
-				name,
-				birth,
-				gender,
-				services,
-				created_at
-			});
-
-			fs.writeFile('data.json', JSON.stringify(data, null, 1), err => {
-				if(err) return res.send('Erro na escrita!');
-
-				return res.redirect('/instructors');
-			});
-		}
-		return res.render('instructors/index');
+		return res.render('instructors/index', { instructors: data.instructors });
 	},
 	// Create
 	create: (req, res) => {
-		return res.render('instructors/create');
+		const keys = Object.keys(req.body);
+
+		for(key of keys){
+			if(req.body[key].trim() === ""){
+				return res.send('Preencha todos os campos corretamente');
+			}
+		}
+
+		let { avatar_url, birth, name, services, gender } = req.body;
+
+
+		birth = Date.parse(req.body.birth);
+		const created_at = Date.now();
+		const id = Number(data.instructors.length + 1);
+
+
+		data.instructors.push({
+			id,
+			avatar_url,
+			name,
+			birth,
+			gender,
+			services,
+			created_at
+		});
+
+		fs.writeFile('data.json', JSON.stringify(data, null, 1), err => {
+			if(err) return res.send('Erro na escrita!');
+
+			return res.redirect('/instructors');
+		});
 	},
 	// Detail
 	detail: (req, res) => {
@@ -64,7 +62,7 @@ const InstructorController = {
 	},
 	// Edit
 	edit: (req, res) => {
-		const { id } = req.params;
+		const { id } = req.body;
 
 		const foundInstructor = data.instructors.find(instructor => 
 			id == instructor.id);
@@ -73,10 +71,33 @@ const InstructorController = {
 		
 		const instructor = {
 			...foundInstructor,
-			 birth: date(foundInstructor.birth)
+			...req.body,
+			birth: Date.parse(req.body.birth),
 		}
 
-		return res.render('instructors/edit', { instructor });
+		data.instructors[id - 1] = instructor;
+
+		fs.writeFile('data.json', JSON.stringify(data, null, 2), err => {
+			if(err) return res.send('Erro de escrita');
+
+			return res.redirect(`instructors/${id}`);
+		});
+	},
+	// Delete
+	delete: (req, res) => {
+	const { id } = req.body;
+
+	const filteredInstructor = data.instructors.filter( instructor => 
+			instructor.id != id
+		);
+	
+	data.instructors = filteredInstructor;
+
+	fs.writeFile('data.json', JSON.stringify(data, null, 2), err => {
+		if(err) return res.send('Erro na escrita');
+
+		return res.redirect('/instructors');
+	});
 	}
 }
 
