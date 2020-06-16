@@ -1,5 +1,6 @@
 const fs = require('fs');
 const data = require('../data.json');
+const { age } = require('../lib');
 
 const InstructorController = {
 	index: (req, res) => {
@@ -49,25 +50,17 @@ const InstructorController = {
 		
 		if(!foundInstructor) return res.send('Instrutor não encontrado');
 
-		function age(timestamp){
-			const today = new Date();
-			const birthDate = new Date(timestamp);
-			let age = today.getFullYear() - birthDate.getFullYear();
-			const month = today.getMonth() - birthDate.getMonth();
-			if(month < 0 || month == 0 && today.getDate() <= birthDate.getDate()){
-				age +- 1;
-			}
-		}
-
-		const services = foundInstructor.services.split(',');
 		const instructor = {
 			...foundInstructor,
 			age: age(foundInstructor.birth),
 			services: foundInstructor.services.split(','),
-			created_at: ''
+			created_at: Intl.DateTimeFormat('pt-BR').format(foundInstructor.created_at),
 		};
 
 		return res.render('instructors/detail', { instructor });
+	},
+	edit: (req, res) => {
+		return res.render('instructors/edit');
 	}
 }
 

@@ -12,6 +12,7 @@ routes.get('/instructors', InstructorController.index);
 routes.post('/instructors', InstructorController.index);
 routes.get('/instructors/create', InstructorController.create);
 routes.get('/instructors/:id', InstructorController.detail);
+routes.get('/instructors/:id/edit', InstructorController.edit);
 
 // Page members
 routes.get('/members', (req, res) => {
