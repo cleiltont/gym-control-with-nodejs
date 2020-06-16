@@ -1,19 +1,21 @@
 {% extends 'layout.html' %}
 	
 {% block content %}
-<div class="card">
+<div class="card table-container">
 	<table>
 		<thead>
 			<tr>
 				<th>Instrutor</th>
 				<th>Atendimento</th>
+				<th>Acão</th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for instructor in instructors %}
 			<tr>
-				<td>Cleilton</td>
-				<td>Natação</td>
+				<td>{{instructor.name}}</td>
+				<td>{{instructor.services}}</td>
+				<td><a href="instructors/{{instructor.id}}">ver</a></td>
 			</tr>
 			{% endfor %}
 		</tbody>
