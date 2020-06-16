@@ -1,6 +1,6 @@
 const fs = require('fs');
 const data = require('../data.json');
-const { age } = require('../lib');
+const { age, date } = require('../lib');
 
 const InstructorController = {
 	index: (req, res) => {
@@ -39,9 +39,11 @@ const InstructorController = {
 		}
 		return res.render('instructors/index');
 	},
+	// Create
 	create: (req, res) => {
 		return res.render('instructors/create');
 	},
+	// Detail
 	detail: (req, res) => {
 		const { id } = req.params;
 
@@ -54,13 +56,27 @@ const InstructorController = {
 			...foundInstructor,
 			age: age(foundInstructor.birth),
 			services: foundInstructor.services.split(','),
-			created_at: Intl.DateTimeFormat('pt-BR').format(foundInstructor.created_at),
+			created_at: Intl.DateTimeFormat('pt-BR')
+				.format(foundInstructor.created_at),
 		};
 
 		return res.render('instructors/detail', { instructor });
 	},
+	// Edit
 	edit: (req, res) => {
-		return res.render('instructors/edit');
+		const { id } = req.params;
+
+		const foundInstructor = data.instructors.find(instructor => 
+			id == instructor.id);
+		
+			if(!foundInstructor) return res.send('Instrutor não encontrado');
+		
+		const instructor = {
+			...foundInstructor,
+			 birth: date(foundInstructor.birth)
+		}
+
+		return res.render('instructors/edit', { instructor });
 	}
 }
 
