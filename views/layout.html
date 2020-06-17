@@ -4,16 +4,24 @@
 	<meta charset="UTF-8">
 	<title>Gym Manager</title>
 	<link rel="stylesheet" href="/style.css">
+	<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-replace-svg="nest"></script>
 </head>
 <body>
 <header>
-	<nav class="links">
+		<nav class="links">
 		<a href="/instructors">Instructors</a>
 		<a href="/members">Members</a>
 	</nav>
 </header>
+
+<div class="container-layout">
 {% block content %}
 {% endblock %}
+</div>
+
+<footer>
+	<p>Controle de Academia</p>
+</footer>
 
 	<script src="/scripts.js"></script>
 </body>

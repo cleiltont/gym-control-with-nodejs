@@ -1,37 +1,31 @@
-﻿:root{
-	--primary-color: #7159C1;
-	--secondary-color: #F7DF1E;
+﻿@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root{
+	--color1: #333;
+	--color2: #74D990;
+	--color3: #FF3042;
 }
 
-/* Layout */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');*{margin: 0;padding: 0;border: 0;box-sizing: border-box;outline: none;text-decoration: none;font-family: 'Roboto', sans-serif;}body{background-color: #7159C1}header{background-color: #FFF;width: 100%;padding: 32px;text-align: center}.links a{position: relative;font-size: 32px}.links a + a{margin-left: 32px}.links a::after{margin: 0 auto;content: "";width: 0%;height: 3px;background: #333;position: absolute;left: 0;bottom: -14px;transition-property: bottom, width;transition-duration: 500ms }.links a:hover::after{width: 100%;bottom: -5px} button{cursor: pointer;}
+*{margin: 0;padding: 0;box-sizing: border-box;outline: none;text-decoration: none;font-family: 'Roboto'; border: 0;}body{background-color: var(--color1)}header{width: 100%;background: #333;border-bottom: 3px solid #424242;display: flex;justify-content: center;align-items: center}nav a{color: #FFF;font-weight: 600;padding: 15px 10px;display: inline-block;font-size: 24px;transition: color 500ms}nav a:hover{color: #74D990}.container-layout{height: 90vh;display: flex;justify-content: center;align-items: center}.card{background: #FFF;width: 80%;padding: 10px 5px 50px}table{width: 100%;position: relative}thead{text-align: left;line-height: 30px}footer{text-align: center;color: #FFF;background: #212121;line-height: 40px}
+button{cursor: pointer}.bt{background: #203F4C;color: #FFF;padding: 4px 10px;border-radius: 3px}.new{float: right;margin: 0px 0px 10px}.img{display: flex;align-items: center}td img{width: 60px;border-radius: 100vh;border: 1px solid #333;padding: 2px;margin-right: 6px}th{line-height: 40px}tr{line-height: 80px}
 
-/* Page Intructors */
-.card{background-color: #FFF;width: 800px;min-height: 400px;margin: 45px auto;display: grid;grid-template-columns: 1fr 1fr;box-shadow: 1px 1px 5px 1px #333333b8;border-radius: 3px;transition-property: all;animation-name: up;animation-duration: 700ms}@keyframes up{0%{opacity: 0;transform: translateY(14px)}100%{opacity: 1}}.details{padding: 32px}.details .item{border-bottom: 1px solid rgba(0, 0, 0, .2);padding: 16px 0}.details .item:last-child{border: none}.details h3,.details .item div:nth-child(1){color: #777;font-size: 14px;line-height: 24px;letter-spacing: 0.7px;font-weight: normal}.details .item div:nth-child(1){color: #555;font-weight: bold;font-size: 18px}.details h3{text-transform: uppercase;font-weight: bold;color: var(--primary-color)}.details .item span{padding: 8px 16px;background-color: var(--secondary-color);border-radius: 16px;color: #777;margin-right: 4px;margin-top: 8px;display: inline-block;font-weight: bold;text-transform: uppercase;font-size: 12px}
-
-/* Page create instrctor */
-.item input{width: 100%;padding: 4px 5px;color: #333;font-weight: bold;font-size: 16px}.item div span input{width: auto}button[type="submit"], a.button{width: 100%;line-height: 30px;background: var(--primary-color);color: #FFF}a.button{display: block;text-align: center} #form-delete button{margin-top: 8px;background-color: tomato;}
-
-/* Page table instructors*/
-.table-container {
-	display: block;
-	padding: 40px;
+h3{
+	color: #333;
+	margin-bottom: 20px;
 }
-
-.table-container table {
-	border-spacing: 0;
+.item div{
+	color: #5f5f5f;
+	margin-bottom: 15px;
+}
+div span{
+	display: inline-block;
+}
+input{
 	width: 100%;
+  padding: 5px 10px 5px;
 }
-
-.table-container thead tr th {
-	text-align: left;
-}
-
-td, th {
-	padding: 16px;
-	border-bottom: 1px solid #D9D9D9;
-}
-
-tbody tr:last-child td {
-	border-bottom: none;
+.post{
+	width: 100%;
+	line-height: 30px;
+	margin-top: 5px;
 }

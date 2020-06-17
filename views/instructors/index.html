@@ -3,19 +3,27 @@
 {% block content %}
 <div class="card table-container">
 	<table>
+		<a class="bt new" href="instructors/create">
+			<i class="fas fa-plus"></i>
+			Novo
+		</a>
 		<thead>
 			<tr>
 				<th>Instrutor</th>
 				<th>Atendimento</th>
-				<th>Acão</th>
+				<th>Ação</th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for instructor in instructors %}
 			<tr>
-				<td>{{instructor.name}}</td>
+				<td class="img">
+					<img src="{{instructor.avatar_url}}" alt="{{instructor.name}}">
+					{{instructor.name}}
+				</td>
 				<td>{{instructor.services}}</td>
-				<td><a href="instructors/{{instructor.id}}">ver</a></td>
+				<td><a class="bt" href="instructors/{{instructor.id}}">
+					<i class="far fa-eye"></i></a></td>
 			</tr>
 			{% endfor %}
 		</tbody>

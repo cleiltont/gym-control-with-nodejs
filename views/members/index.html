@@ -1,5 +1,38 @@
 {% extends 'layout.html' %}
-
+	
 {% block content %}
-	<h1 style="color: #FFF;">Members</h1>
+<div class="card table-container">
+	<table>
+		<a class="bt new" href="create">
+			<i class="fas fa-plus"></i>
+			Novo
+		</a>
+		<thead>
+			<tr>
+				<th>Membro</th>
+				<th>Email</th>
+				<th>Peso</th>
+				<th>Altura</th>
+				<th>Ação</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for member in members %}
+			<tr>
+				<td class="img">
+					<img src="{{member.avatar_url}}" alt="{{member.name}}">
+					{{member.name}}
+				</td>
+				<td>{{member.email}}</td>
+				<td>{{member.weight}}</td>
+				<td>{{member.height}}</td>
+				<td><a href="members/{{member.id}}">
+					<i class="far fa-eye"></i></a></td>
+				</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+		
 {% endblock %}
