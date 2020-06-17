@@ -3,7 +3,7 @@
 {% block content %}
 <div class="card table-container">
 	<table>
-		<a class="bt new" href="instructors/create">
+		<a class="bt new" href="/instructors/create">
 			<i class="fas fa-plus"></i>
 			Novo
 		</a>
@@ -22,7 +22,7 @@
 					{{instructor.name}}
 				</td>
 				<td>{{instructor.services}}</td>
-				<td><a class="bt" href="instructors/{{instructor.id}}">
+				<td><a class="bt" href="/instructors/{{instructor.id}}">
 					<i class="far fa-eye"></i></a></td>
 			</tr>
 			{% endfor %}

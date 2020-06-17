@@ -28,4 +28,10 @@ input{
 	width: 100%;
 	line-height: 30px;
 	margin-top: 5px;
+	display: flex;
+  justify-content: center;
+}
+.item{
+	border-bottom: 2px solid #dadada;
+  margin-bottom: 20px;
 }

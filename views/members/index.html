@@ -3,7 +3,7 @@
 {% block content %}
 <div class="card table-container">
 	<table>
-		<a class="bt new" href="create">
+		<a class="bt new" href="/members/create">
 			<i class="fas fa-plus"></i>
 			Novo
 		</a>
@@ -26,7 +26,7 @@
 				<td>{{member.email}}</td>
 				<td>{{member.weight}}</td>
 				<td>{{member.height}}</td>
-				<td><a href="members/{{member.id}}">
+				<td><a class="bt" href="/members/{{member.id}}">
 					<i class="far fa-eye"></i></a></td>
 				</a></td>
 			</tr>
