@@ -1,0 +1,9 @@
+<script>
+	let btDelete = document.querySelector('#form-delete');
+	btDelete.addEventListener('submit', event => {
+		const option = confirm('Tem certeza que deseja excluir?');
+		if(!option){
+			event.preventDefault();
+		}
+	});
+</script>
