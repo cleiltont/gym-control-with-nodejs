@@ -63,3 +63,9 @@ input{
 	color: #FFF;
 	margin: 0 5px;
 }
+
+.item div span {
+	background: yellow;
+	padding: 5px 10px;
+	margin-right: 10px;
+}

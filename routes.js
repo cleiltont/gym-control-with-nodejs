@@ -1,10 +1,9 @@
 const express = require('express');
 const routes = express.Router();
 
-const InstructorController = require('./controllers/InstructorController');
-const MemberController = require('./controllers/MemberController');
+const InstructorController = require('./src/controllers/InstructorController');
+const MemberController = require('./src/controllers/MemberController');
 
-const data = require('./data.json');
 const { age, date } = require('./lib');
 
 /* -----	INSTRUCTORES	----- */
@@ -17,17 +16,7 @@ routes.get('/instructors/:id', InstructorController.detail);
 routes.get('/instructors/:id/edit', (req, res) => {
 	const { id } = req.params;
 
-	const foundInstructor = 
-		data.instructors.find(instructor => id == instructor.id );
-	
-	if(!foundInstructor) return res.send('Instrutor não encontrado');
-
-	const instructor = {
-		...foundInstructor,
-		birth: date(foundInstructor.birth)
-	};
-
-	return res.render('instructors/edit', { instructor });
+	return res.render('instructors/edit', { instructor: 'nops' });
 });
 routes.put('/instructors', InstructorController.edit);
 routes.delete('/instructors', InstructorController.delete);
@@ -43,17 +32,7 @@ routes.get('/members/:id', MemberController.detail);
 routes.get('/members/:id/edit', (req, res) => {
 	const { id } = req.params;
 
-	const foundMember = 
-		data.members.find(member => id == member.id );
-	
-	if(!foundMember) return res.send('Instrutor não encontrado');
-
-	const member = {
-		...foundMember,
-		birth: date(foundMember.birth)
-	};
-
-	return res.render('members/edit', { member });
+	return res.render('members/edit', { member: 'nops' });
 });
 routes.put('/members', MemberController.edit);
 // Delete
